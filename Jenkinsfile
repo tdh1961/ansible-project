@@ -38,7 +38,7 @@ stage('Run playbook') {
                     sh 'unzip -o code.zip'
                     // Run ansible-playbook from the correct directory
                     dir('code') {
-                       sh 'ansible-playbook -i /home/ec2-user/ansible-dev/inventory.yml /home/ec2-user/ansible-dev/play.yml'
+                       sh 'ansible-playbook -i /home/ec2-user/ansible-dev/inventory.yml /home/ec2-user/ansible-dev/play2.yml'
                         
                         
                     }
