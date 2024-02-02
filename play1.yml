@@ -1,0 +1,26 @@
+---
+- hosts: all 
+  become: true
+  gather_facts: yes
+  ignore_errors: true
+  vars:
+    user_name: huguette123
+    group_name: security
+  vars_files:
+    - variables.yml 
+  tasks:
+    - name: check the time
+      command: date
+      when: ansible_distribution == "serge" or ansible_processor_nproc ==2
+    - name: create user huguette
+      user:
+        name: "{{user_name}}"
+        comment: Huguette Admin
+    - name: create group
+      group:
+        name: "{{group_name}}"
+        state: present
+    - name: install package
+      package:
+        name: "{{pkg_name}}"
+        state: present
